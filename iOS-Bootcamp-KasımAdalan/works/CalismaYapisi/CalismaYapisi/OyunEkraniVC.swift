@@ -8,22 +8,25 @@
 import UIKit
 
 class OyunEkraniVC: UIViewController {
-
+    
+    var kisi:Kisiler? // bu ekrana gelecek olan mesajı temsilen
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        if let k = kisi {
+            print("Kişi Adı : \(k.ad!)") // bu ekrana bir mesaj geldiği zaman m değişkenine bu mesajı aktarmış olacağız
+            print("Kişi Yaş : \(k.yas!)")
+            print("Kişi Boy : \(k.boy!)")
+            print("Kişi Bekar : \(k.bekar!)")
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func geriButton(_ sender: Any) {
+       // navigationController?.popViewController(animated: true) // bir önceki sayfaya dönüş
+        navigationController?.popToRootViewController(animated: true) // anasayfaya dönüş
     }
-    */
-
+    
+    @IBAction func bitirButton(_ sender: Any) {
+        performSegue(withIdentifier: "sonucEkraninaGecis", sender: nil)
+    }
 }
